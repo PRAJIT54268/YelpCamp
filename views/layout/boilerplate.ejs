@@ -15,10 +15,10 @@
 
 <body class="d-flex flex-column vh-100">
     <%- include('../partials/navbar')%>
-        <!-- this ejs is used to embed other ejs in it , we can embed using different ways depending upon the file , check docs -->
+        
         <main class="container mt-5">
             <!-- Before -->
-            <%- include('../partials/flash')%> <!-- inclusion of flash messages from flash.ejs-->
+            <%- include('../partials/flash')%> 
                 <%- body %>
                     <!-- After -->
         </main>
@@ -29,7 +29,7 @@
             <script src="https://stackpath.bootstrapcdn.com/bootstrap/5.0.0-alpha1/js/bootstrap.min.js"
                 integrity="sha384-oesi62hOLfzrys4LxRF63OJCXdXDipiYWBnvTl9Y9/TRlw5xlKIEHpNyvvDShgf/"
                 crossorigin="anonymous"></script>
-            <!-- this script is just to help us in error handling -->
+            
 
             <script src='/javascripts/validateForms.js'></script>
 </body>

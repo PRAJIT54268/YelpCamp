@@ -1,5 +1,3 @@
-// we can replace JOI with express-validator tool
-
 const BaseJoi = require('joi');
 const sanitizeHtml = require('sanitize-html');
 
@@ -23,15 +21,15 @@ const extension = (joi) => ({
     }
 });
 
-const Joi = BaseJoi.extend(extension) // this now includes the base version of JOI with the above extension which prevents the use of any HTML, thus prevents cross site scripts[XSS]
+const Joi = BaseJoi.extend(extension)
 
 
-// incorrect passing of value may cause our website to crash , but JOI prevents this  and validates our data without it validation is not possible
-module.exports.campgroundSchema = Joi.object({ // this is not a mongoose schema , it is just to validate our data
-    campground: Joi.object({ // since we are storing our data inside an object called campground hence we have created an object using campground
+module.exports.campgroundSchema = Joi.object({
+    campground: Joi.object({ 
         title: Joi.string().required().escapeHTML(),
         price: Joi.number().required().min(0),
         // image: Joi.string().required(),
+        phone: Joi.number().required(),
         location: Joi.string().required().escapeHTML(),
         description: Joi.string().required().escapeHTML()
     }).required(),

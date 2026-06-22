@@ -53,7 +53,7 @@ module.exports.validateReview = (req, res, next) => {
     }
 }
 
-module.exports.storeReturnTo = (req, res, next) => { // this is created because authenticate function of passport for security now deletes the returnto info hence we have created this middleware to save that info and use it even after authentication hence call this middleware just before authenticate function
+module.exports.storeReturnTo = (req, res, next) => { 
     if (req.session.returnTo) {
         res.locals.returnTo = req.session.returnTo;
     }

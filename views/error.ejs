@@ -5,7 +5,7 @@
                 <h4 class="alert-heading"><%=err.message%></h4>
                 <% if (process.env.NODE_ENV !=="production" ) { %>
                     <p><%= err.stack %></p>
-                    <% } %> <!--if you don't want to have that long error message in the error page then comment the above line as it is just for development purposes -->
+                    <% } %>
             </div>
         </div>
     </div>

@@ -1,16 +1,15 @@
 const mongoose = require('mongoose');
 const Review = require('./review')
-const Schema = mongoose.Schema; // just set the word Schema as short for mongoose.Schema
+const Schema = mongoose.Schema;
 
 
-// https://res.cloudinary.com/douqbebwk/image/upload/w_300/v1600113904/YelpCamp/gxgle1ovzd2f3dgcpass.png
 
 const ImageSchema = new Schema({
     url: String,
     filename: String
 });
 
-ImageSchema.virtual('thumbnail').get(function () { // this allows us to give a virtual property to every image , here it replaces the url of each image
+ImageSchema.virtual('thumbnail').get(function () { 
     return this.url.replace('/upload', '/upload/w_200');
 });
 
@@ -22,14 +21,18 @@ const CampgroundSchema = new Schema({
     price: Number,
     description: String,
     location: String,
+    phone: {
+        type: Number,
+        required: true
+    },
     geometry: {
         type: {
             type: String,
-            enum: ['Point'], // this comes from mapTiler and will always be Point
+            enum: ['Point'],
             required: true
         },
         coordinates: {
-            type: [Number], // coordinates are passes in as numbers since they are decimal
+            type: [Number],
             required: true
         }
     },
@@ -51,7 +54,7 @@ CampgroundSchema.virtual('properties.popUpMarkup').get(function () {
     <p>${this.description.substring(0, 20)}...</p>`
 }); 
 
-CampgroundSchema.post('findOneAndDelete', async function (doc) { // this is so that we can delete our reviews as well when we delete the campground
+CampgroundSchema.post('findOneAndDelete', async function (doc) { 
     if (doc) {
         await Review.deleteMany({
             _id: {

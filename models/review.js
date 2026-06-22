@@ -12,4 +12,3 @@ const reviewSchema = new Schema({
 
 module.exports = mongoose.model("Review", reviewSchema);
 
-// now review is a one to many relationship

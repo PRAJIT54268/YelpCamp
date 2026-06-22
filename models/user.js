@@ -10,6 +10,6 @@ const UserSchema = new Schema({
     }
 });
  
-UserSchema.plugin(passportLocalMongoose.default); // earlier this line used to be written without default but in the new version we need to include it to avoid error
+UserSchema.plugin(passportLocalMongoose.default); 
  
 module.exports = mongoose.model('User', UserSchema);

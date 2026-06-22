@@ -13,8 +13,8 @@ module.exports.register = async (req, res, next) => {
     try {
         const { email, username, password } = req.body;
         const user = new User({ email, username });
-        const registeredUser = await User.register(user, password); // register is a method which checks for the user object and the password , and if they are unique and hashes the password
-        req.login(registeredUser, err => { // passing error because it requires a callback 
+        const registeredUser = await User.register(user, password);
+        req.login(registeredUser, err => { 
             if (err) return next(err);
             req.flash('success', 'Welcome to Yelp Camp!');
             res.redirect('/campgrounds');
@@ -31,12 +31,12 @@ module.exports.renderLogin = (req, res) => {
 
 module.exports.login = (req, res) => {
     req.flash('success', 'Welcome back!');
-    const redirectUrl = res.locals.returnTo || '/campgrounds'; // update this line to use res.locals.returnTo now
+    const redirectUrl = res.locals.returnTo || '/campgrounds'; 
     res.redirect(redirectUrl);
 }
 
 module.exports.logout = (req, res) => {
-    req.logout(function (err) { // this is added because the new version of passport requires a callback function
+    req.logout(function (err) { 
         if (err) {
             return next(err);
         }

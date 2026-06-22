@@ -1,4 +1,4 @@
-<% layout('layout/boilerplate') %> <!-- this will directly look inisde the views folder hence no need for ./ -->
+<% layout('layout/boilerplate') %> 
     <div id="cluster-map"></div>
 
 
@@ -11,10 +11,10 @@
                     <div class="col-md-4">
                         <%if(campground.images.length) {%>
                             <img class="img-fluid" alt="" src="<%=campground.images[0].url%>">
-                            <!-- this allows us to show the first image uploaded on the show page -->
+                            
                             <% }else {%>
                                 <img class="img-fluid" alt=""
-                                    src="https://res.cloudinary.com/dmvpwh54r/image/upload/v1781846630/YelpCamp/liryhqdh1sxp14hiu14m.jpg">
+                                    src="https://images.unsplash.com/photo-1497900304864-273dfb3aae33?q=80&w=915&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D">
                                 <% } %>
                     </div>
                     <div class="col-md-8">
